@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "cn.com.tianyudg.mvpdemo"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.android.support:recyclerview-v7:25.0.+'
+    compile 'com.android.support:design:25.0.+'
+
+
+    //谷歌Xing包
+    compile 'com.google.zxing:core:3.2.1'
+
+    //Butterknife
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    //AutoLayout
+    compile 'com.zhy:autolayout:1.4.5'
+
+    //JpTabBar
+    compile 'com.jpeng:JPTabBar:1.2.3'
+
+    /*权限*/
+    compile 'com.github.hotchemi:permissionsdispatcher:2.3.2'
+    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.3.2'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.3.2'
+    //UI布局
+    compile 'me.yokeyword:fragmentation:0.9.0'
+    /*图片*/
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.jph.takephoto:takephoto_library:4.0.3'
+    /*json*/
+    compile 'com.alibaba:fastjson:1.1.57.android'
+    /*net*/
+    compile 'com.lzy.net:okgo:2.1.4'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    /*dialog*/
+    compile 'com.orhanobut:dialogplus:1.11@aar'
+//    compile 'com.afollestad.material-dialogs:core:0.9.4.2'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+
+    /*bugly*/
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    /*rx*/
+    compile 'io.reactivex:rxjava:1.2.9'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    /*压缩*/
+    compile 'top.zibin:Luban:1.0.9'
+    /*recycleradapter*/
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25'
+}
