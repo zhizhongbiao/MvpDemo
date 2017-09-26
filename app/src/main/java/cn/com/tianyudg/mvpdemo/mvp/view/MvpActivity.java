@@ -13,7 +13,6 @@ import java.lang.reflect.ParameterizedType;
 
 import cn.com.tianyudg.mvpdemo.R;
 import cn.com.tianyudg.mvpdemo.mvp.network.ResponseInfo;
-import cn.com.tianyudg.mvpdemo.mvp.presenter.MvpBasePresenter;
 import cn.com.tianyudg.mvpdemo.mvp.presenter.MvpPresenter;
 import cn.com.tianyudg.mvpdemo.mvp.reveiver.NetworkStateEvent;
 import cn.com.tianyudg.mvpdemo.mvp.utils.ToastUtil;
@@ -26,7 +25,7 @@ import cn.com.tianyudg.mvpdemo.mvp.utils.UIUtils;
  * Desc :
  */
 
-public abstract class MvpActivity<P extends MvpBasePresenter> extends BaseActivity implements MvpView {
+public abstract class MvpActivity<P extends MvpPresenter> extends BaseActivity implements MvpView {
 
     protected P presenter;
     protected MaterialDialog progressDialog;

@@ -14,7 +14,6 @@ import java.lang.reflect.ParameterizedType;
 
 import cn.com.tianyudg.mvpdemo.R;
 import cn.com.tianyudg.mvpdemo.mvp.network.ResponseInfo;
-import cn.com.tianyudg.mvpdemo.mvp.presenter.MvpBasePresenter;
 import cn.com.tianyudg.mvpdemo.mvp.presenter.MvpPresenter;
 import cn.com.tianyudg.mvpdemo.mvp.reveiver.NetworkStateEvent;
 import cn.com.tianyudg.mvpdemo.mvp.utils.ToastUtil;
@@ -27,7 +26,7 @@ import cn.com.tianyudg.mvpdemo.mvp.utils.UIUtils;
  * Desc :
  */
 
-public abstract class MvpFragment<P extends MvpBasePresenter>  extends BaseFragment implements MvpView {
+public abstract class MvpFragment<P extends MvpPresenter>  extends BaseFragment implements MvpView {
 
     protected P presenter;
     protected MaterialDialog progressDialog;

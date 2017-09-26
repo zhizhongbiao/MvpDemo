@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="transparent">#00e4dfdf</color>
+    <color name="colorPrimary">@color/appColor</color>
+    <color name="colorPrimaryDark">@color/appColor</color>
+    <color name="colorAccent">@color/appColor</color>
+
+    <color name="appColor">#ff850b</color>
+    <color name="bgColor">#ebebeb</color>
+    <color name="bgWhite">#FFFFFF</color>
+    <color name="splitLineColor">#e0dad5</color>
+    <color name="BigSplitLineColor">#f5f2f7</color>
+    <color name="transparent">#00f5f2f7</color>
+
+
+    <color name="text_gray_low">#999999</color>
+    <color name="text_orange">#ff850b</color>
+    <color name="text_green">#76c400</color>
+    <color name="text_bule">#15afee</color>
+    <color name="text_red">#e58a8a</color>
+
+
+    <color name="bg_gray">#b3b3b3</color>
+    <color name="bg_orange">#ff850b</color>
+
+
+
+
+    <!--界面背景色-->
+    <color name="theme_orange">#fd7801</color>
+    <color name="theme_orange_lower">#ffa64c</color>
+    <color name="theme_orange_gray">#fce2ca</color>
+
+    <color name="theme_white">#fefefe</color>
+    <color name="theme_gray">#f7f7f7</color>
+    <color name="theme_gray_deep">#cccccc</color>
+
+    <!--文本颜色-->
+    <color name="text_white">#ffffff</color>
+    <color name="text_gray_deep">#666666</color>
+    <color name="text_black">#333333</color>
+    <color name="text_gray">#cccccc</color>
+
+
+    <!--编辑框文字-->
+    <color name="edit_text_black">#737373</color>
+    <color name="edit_text_gray">#cacaca</color>
+
+    <!--分割线颜色-->
+    <color name="line_gray">#e6e6e6</color>
+
+
+
 </resources>
