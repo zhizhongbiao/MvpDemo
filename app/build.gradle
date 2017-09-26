@@ -29,10 +29,12 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
+//    官方包
     compile 'com.android.support:recyclerview-v7:25.0.+'
     compile 'com.android.support:design:25.0.+'
 
 
+//    第三方
     //谷歌Xing包
     compile 'com.google.zxing:core:3.2.1'
 
