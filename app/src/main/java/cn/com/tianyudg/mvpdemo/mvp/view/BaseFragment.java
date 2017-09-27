@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.com.tianyudg.mvpdemo.mvp.MainApplication;
 import me.yokeyword.fragmentation.SupportFragment;
 
 
@@ -38,7 +41,7 @@ public abstract class BaseFragment extends SupportFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, contentView);
-        initView(savedInstanceState,getArguments());
+        initView(savedInstanceState, getArguments());
 
     }
 
@@ -50,10 +53,13 @@ public abstract class BaseFragment extends SupportFragment {
     protected abstract void initView(Bundle savedInstanceState, Bundle args);
 
 
-
     @Override
     public void onDestroyView() {
         mUnbinder.unbind();
         super.onDestroyView();
+//        检测内存
+        RefWatcher memoryWatcher = MainApplication.getMemoryWatcher(getActivity());
+        if (memoryWatcher == null) return;
+        memoryWatcher.watch(this);
     }
 }

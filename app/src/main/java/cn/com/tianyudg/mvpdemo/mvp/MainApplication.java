@@ -1,13 +1,18 @@
 package cn.com.tianyudg.mvpdemo.mvp;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.os.Handler;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cookie.store.PersistentCookieStore;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import cn.com.tianyudg.mvpdemo.mvp.manager.CacheManager;
+import cn.com.tianyudg.mvpdemo.mvp.utils.LogUtils;
 
 
 public class MainApplication extends Application {
@@ -21,26 +26,66 @@ public class MainApplication extends Application {
     private static int mMainThreadId = android.os.Process.myTid();
     //context
     private static MainApplication instance;
-    //内存检测watcher
-//    private RefWatcher refWatcher;
-    private boolean isLogin;
-    public static final String CART_NUM = "CART_NUM";
-    public static final String VALET_CART_NUM = "VALET_CART_NUM";
-//    public LocationService locationService;
 
-    //    PatchManager patchManager;
+    //内存检测watcher
+    private RefWatcher memoryWatcher;
+
+    public static RefWatcher getMemoryWatcher(Context context) {
+        return ((MainApplication) context.getApplicationContext()).memoryWatcher;
+    }
+
+    public static boolean isApkDebugable(Context context) {
+        try {
+            ApplicationInfo info = context.getApplicationInfo();
+            return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+
+//    public LocationService locationService;
+//    PatchManager patchManager;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-
+        initOkGo();
         CacheManager.openCache(getInstance(), "data");
-
-//        refWatcher = LeakCanary.install(this);
-//        CrashReport.initCrashReport(this, "f66cd55ecc", false);
         mainPreferences = getSharedPreferences(MAIN_PREFERENCE, MODE_PRIVATE);
+
+        initLeakCanary();
+
+//        CrashReport.initCrashReport(this, "f66cd55ecc", false);
 //        BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
+//        SDKInitializer.initialize(this);
+//        locationService = new LocationService(getApplicationContext());
+//        PlatformConfig.setWeixin("wx9b0e2381a696668d", "32fd4bbbb1a6d4da4c71516615d7470d");
+//        PlatformConfig.setQQZone("1106152416", "BJ6Y6CuIw74E4JDW");
+//        UMShareAPI.get(this);
+    }
+
+    /**
+     * 初始化LeakCanary,内存检测
+     */
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this) || !isApkDebugable(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            LogUtils.e("LeakCanary.isInAnalyzerProcess(this)||!isApkDebugable(this)初始化LeakCanary,内存检测");
+            return;
+        }
+        memoryWatcher = LeakCanary.install(this);
+    }
+
+
+    /**
+     * 初始化OkGO
+     */
+    private void initOkGo() {
         OkGo.init(this);
         try {
             OkGo.getInstance()
@@ -50,12 +95,6 @@ public class MainApplication extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        SDKInitializer.initialize(this);
-//        locationService = new LocationService(getApplicationContext());
-//        PlatformConfig.setWeixin("wx9b0e2381a696668d", "32fd4bbbb1a6d4da4c71516615d7470d");
-//        PlatformConfig.setQQZone("1106152416", "BJ6Y6CuIw74E4JDW");
-//        UMShareAPI.get(this);
     }
 
     public static Thread getMainThread() {
@@ -78,9 +117,5 @@ public class MainApplication extends Application {
         return getInstance().mainPreferences;
     }
 
-/*    public static RefWatcher getRefWatcher() {
-        MainApplication application = (MainApplication) MainApplication.getInstance();
-        return application.refWatcher;
-    }*/
 
 }
