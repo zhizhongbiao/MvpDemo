@@ -1,12 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="VerticalSplitLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2px</item>
+        <item name="android:background">#333333</item>
+    </style>
+
+
+    <!--垂直分割线-->
+    <style name="HorizontalSplitLine">
+        <item name="android:layout_width">2px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#333333</item>
+    </style>
+
 
 
     <!-- 防止欢迎页白屏或者黑屏，设置图片 -->
@@ -18,5 +33,40 @@
         <!--<item name="android:windowIsTranslucent">false</item>-->
         <!--<item name="android:windowDisablePreview">true</item>-->
     </style>
+
+
+
+    <!--滑动退出主题-->
+    <style name="SwipeTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/SwipeBackAnim</item>
+    </style>
+
+
+    <!--滑动退出动画-->
+    <style name="SwipeBackAnim" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>     <!--a -> b  b anim-->
+        <item name="android:activityOpenExitAnimation">@null</item>                     <!--a -> b   a anim-->
+        <item name="android:activityCloseEnterAnimation">@null</item>                    <!--b -> a  a anim-->
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>    <!--b -> a  b anim-->
+        <item name="android:taskOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@anim/slide_out_right</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
+
+
+
 
 </resources>
