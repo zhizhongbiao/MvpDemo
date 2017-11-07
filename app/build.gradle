@@ -65,7 +65,6 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     /*dialog*/
     compile 'com.orhanobut:dialogplus:1.11@aar'
-//    compile 'com.afollestad.material-dialogs:core:0.9.4.2'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 
     /*bugly*/
@@ -80,7 +79,7 @@ dependencies {
     /*recycleradapter*/
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25'
 
-    //    leakcanary
+//    leakcanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }
